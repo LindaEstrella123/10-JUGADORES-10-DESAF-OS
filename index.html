@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>10 Jugadores, 10 Desafíos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="top"><button id="bTheme" aria-label="Cambiar tema">🌓</button><button id="bSound" aria-label="Sonido">🔊</button></div>
+<div id="toast" role="status"></div>
+<div id="warn" class="card" hidden>⚠️ Falta configurar <b>firebase-config.js</b>. Sigue el README para conectar tu proyecto de Firebase.</div>
+
+<main>
+<section id="home" class="screen">
+  <h1>10 JUGADORES<br><span>10 DESAFÍOS</span></h1>
+  <button class="big" data-go="j">▶ JUGAR</button>
+  <button class="big b2" data-go="c">➕ CREAR SALA</button>
+  <button class="big b3" data-go="j">🔑 UNIRSE A UNA SALA</button>
+  <details class="card"><summary>📖 Instrucciones</summary>
+    <p>Un jugador crea la sala y comparte el código de 6 caracteres. Entran hasta 10 jugadores. El anfitrión inicia la partida: son 9 rondas de minijuegos, cada una con su regla. Responder bien da 100 puntos, más hasta 100 por rapidez (el desafío final vale el doble). Gana quien sume más puntos.</p>
+  </details>
+</section>
+
+<section id="join" class="screen" hidden>
+  <h2>¿Quién eres?</h2>
+  <label>Tu nombre<input id="iName" maxlength="14" autocomplete="nickname" placeholder="Ej. Ana"></label>
+  <p>Elige tu personaje</p><div id="avs" class="avs"></div>
+  <button class="big" id="bCreate">➕ CREAR SALA</button>
+  <label>Código de sala<input id="iCode" maxlength="6" autocapitalize="characters" placeholder="ABC123"></label>
+  <button class="big b3" id="bJoin">🔑 ENTRAR A LA SALA</button>
+  <button class="ghost" data-go="home">← Volver</button>
+</section>
+
+<section id="lobby" class="screen" hidden>
+  <h2>Sala <span id="lCode" class="code"></span></h2>
+  <button class="ghost" id="bCopy">📋 Copiar código</button>
+  <div id="lSlots" class="slots"></div>
+  <p id="lInfo"></p>
+  <button class="big" id="bStart">▶ COMENZAR PARTIDA</button>
+  <button class="ghost" id="bLeave">Salir de la sala</button>
+</section>
+
+<section id="game" class="screen" hidden>
+  <div class="hd"><span id="gRound" class="pill"></span><b id="gTitle"></b><span id="gTime" class="pill"></span></div>
+  <div class="bar"><i id="gBar"></i></div>
+  <p id="gIns" class="card"></p>
+  <div id="gBody"></div>
+  <div id="gPart" class="chips"></div>
+</section>
+
+<section id="board" class="screen" hidden>
+  <h2 id="bTitle"></h2>
+  <p id="bAns" class="card"></p>
+  <ol id="bList" class="rank"></ol>
+  <p id="bNext"></p>
+</section>
+
+<section id="results" class="screen" hidden>
+  <h2 id="rWin"></h2>
+  <div id="podium" class="podium"></div>
+  <ol id="rList" class="rank"></ol>
+  <button class="big" id="bAgain">🔁 VOLVER A JUGAR</button>
+  <button class="ghost" id="bMenu">Regresar al menú</button>
+</section>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
